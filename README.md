@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/gacts/install-podman/assets/7326800/d427cdc0-a49d-4153-8a75-e8c9827f0574" alt="Logo" width="140" />
+  <img src="https://github.com/gacts/install-podman/assets/7326800/b097f993-0b23-4d79-aade-c50499380e16" alt="Logo" width="140" />
 </p>
 
 # Install (update) Podman
