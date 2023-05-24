@@ -1,0 +1,33 @@
+name: tests
+
+on:
+  push:
+    branches: [master, main]
+    tags-ignore: ['**']
+    paths-ignore: ['**.md']
+  pull_request:
+    paths-ignore: ['**.md']
+
+jobs:
+  gitleaks:
+    name: Gitleaks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with: {fetch-depth: 0}
+
+      - name: Check for GitLeaks
+        uses: gacts/gitleaks@v1 # Action page: <https://github.com/gacts/gitleaks>
+
+  run-this-action:
+    name: Run action (${{ matrix.runs-on }})
+    runs-on: ${{ matrix.runs-on }}
+    strategy:
+      fail-fast: false
+      matrix:
+        runs-on: [ubuntu-latest] # macos-latest, windows-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run this action
+        uses: ./
