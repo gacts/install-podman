@@ -10,6 +10,9 @@ inputs:
   qemu:
     description: Install QEMU
     default: 'false' # or 'true'
+  cache-salt:
+    description: The cache salt
+    default: 'v1'
 
 runs:
   using: composite
@@ -44,6 +47,11 @@ runs:
 
     - shell: bash
       run: sudo apt-get -q update
+
+    - uses: awalsh128/cache-apt-pkgs-action@latest
+      with:
+        packages: aardvark-dns conmon containers-common criu crun libnet1 libprotobuf-c1 libprotobuf23 netavark podman-gvproxy python3-protobuf conmon crun podman
+        version: ${{ inputs.cache-salt }}
 
     - shell: bash
       run: sudo apt-get -yq install podman
