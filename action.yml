@@ -52,7 +52,6 @@ runs:
       with:
         packages: aardvark-dns conmon containers-common criu crun libnet1 libprotobuf-c1 libprotobuf23 netavark podman-gvproxy python3-protobuf conmon crun podman
         version: ${{ inputs.cache-salt }}
-        execute_install_scripts: true
 
     - if: ${{ inputs.qemu == 'true' }}
       shell: bash
