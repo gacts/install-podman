@@ -12,7 +12,7 @@ inputs:
     default: 'false' # or 'true'
   cache-salt:
     description: The cache salt
-    default: 'v1'
+    default: 'v2'
 
 runs:
   using: composite
@@ -45,16 +45,11 @@ runs:
             https://download.opensuse.org/repositories/devel:kubic:libcontainers:unstable/Debian_Unstable/ /" \
           | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:unstable.list > /dev/null
 
-    - shell: bash
-      run: sudo apt-get -q update
-
-    - uses: awalsh128/cache-apt-pkgs-action@latest
+    - uses: awalsh128/cache-apt-pkgs-action@v1
       with:
         packages: aardvark-dns conmon containers-common criu crun libnet1 libprotobuf-c1 libprotobuf23 netavark podman-gvproxy python3-protobuf conmon crun podman
         version: ${{ inputs.cache-salt }}
-
-    - shell: bash
-      run: sudo apt-get -yq install podman
+        execute_install_scripts: true
 
     - if: ${{ inputs.qemu == 'true' }}
       shell: bash
