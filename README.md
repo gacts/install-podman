@@ -8,7 +8,8 @@
 [![Build Status][badge_build]][link_build]
 [![License][badge_license]][link_license]
 
-Composite GitHub Action installs a fresh Podman version in your GitHub Actions workflow.
+Composite GitHub Action installs a fresh Podman version in your GitHub Actions workflow. Only for Linux
+(`runs-on: ubuntu-latest`) runners.
 
 ## Usage
 
@@ -20,6 +21,7 @@ jobs:
       - uses: gacts/install-podman@v1
         #with:
         #  kind: unstable # `testing` by default
+        #  qemu: true # `false` by default
 
       - run: dnscontrol version # any dnscontrol command can be executed
 ```

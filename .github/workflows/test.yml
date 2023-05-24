@@ -20,12 +20,13 @@ jobs:
         uses: gacts/gitleaks@v1 # Action page: <https://github.com/gacts/gitleaks>
 
   run-this-action:
-    name: Run action (${{ matrix.runs-on }})
-    runs-on: ${{ matrix.runs-on }}
+    name: 'Run action (${{ matrix.kind }}, qemu: ${{ matrix.qemu }})'
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        runs-on: [ubuntu-latest] # macos-latest, windows-latest
+        kind: [testing, unstable]
+        qemu: [true, false]
     steps:
       - uses: actions/checkout@v3
 
@@ -33,6 +34,9 @@ jobs:
 
       - name: Run this action
         uses: ./
+        with:
+          kind: ${{ matrix.kind }}
+          qemu: ${{ matrix.qemu }}
 
       - run: podman version
 
