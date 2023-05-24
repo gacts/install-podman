@@ -2,7 +2,7 @@
   <img src="https://github.com/gacts/install-podman/assets/7326800/d427cdc0-a49d-4153-8a75-e8c9827f0574" alt="Logo" width="140" />
 </p>
 
-# Install Podman
+# Install (update) Podman
 
 ![Release version][badge_release_version]
 [![Build Status][badge_build]][link_build]
@@ -23,7 +23,7 @@ jobs:
         #  kind: unstable # `testing` by default
         #  qemu: true # `false` by default
 
-      - run: dnscontrol version # any dnscontrol command can be executed
+      - run: podman version
 ```
 
 > Tip: Use [Dependabot][use_dependabot] to maintain your `gacts/install-podman` version updated in your GitHub workflows.
