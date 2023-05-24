@@ -12,7 +12,7 @@ inputs:
     default: 'false' # or 'true'
   cache-salt:
     description: The cache salt
-    default: 'v2'
+    default: 'any-string'
 
 runs:
   using: composite
@@ -52,9 +52,6 @@ runs:
       with:
         packages: aardvark-dns conmon containers-common criu crun libnet1 libprotobuf-c1 libprotobuf23 netavark podman-gvproxy python3-protobuf conmon crun podman
         version: ${{ inputs.cache-salt }}
-
-    - shell: bash
-      run: ls -l /etc/containers/storage.conf
 
     - if: ${{ inputs.qemu == 'true' }}
       shell: bash
