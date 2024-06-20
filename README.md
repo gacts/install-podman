@@ -11,6 +11,11 @@
 Composite GitHub Action installs a fresh Podman version in your GitHub Actions workflow. Only for Linux
 (`runs-on: ubuntu-latest`) runners.
 
+> [!IMPORTANT]
+> Since it was just an experiment to simplify fresh Podman installations in GitHub Actions, we no longer recommend
+> using this action. Please refer to the official Podman documentation for
+> [installation instructions](https://podman.io/docs/installation).
+
 ## Usage
 
 ```yaml
