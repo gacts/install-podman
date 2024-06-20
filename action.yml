@@ -17,6 +17,12 @@ inputs:
 runs:
   using: composite
   steps: # manual: <https://podman.io/docs/installation#debian>
+    - shell: bash
+      run: >
+        echo '::warning title=Action gacts/install-podman is deprecated::Since it was just an experiment to simplify
+        fresh Podman installations in GitHub Actions, we no longer recommend using this action. Please refer to the
+        official Podman documentation for installation instructions: https://podman.io/docs/installation'
+
     - if: ${{ inputs.kind == 'testing' }}
       shell: bash
       run: |
